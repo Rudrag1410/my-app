@@ -1,4 +1,4 @@
-import { mockUserProfile, mockPortfolio } from '../data/mockUser';
+import { mockPortfolio, mockUserProfile } from '@/shared/data/mockUser';
 
 export const buildSystemPrompt = (): string => {
   return `You are the BlinkMoney AI wealth agent, embedded inside the BlinkMoney app.

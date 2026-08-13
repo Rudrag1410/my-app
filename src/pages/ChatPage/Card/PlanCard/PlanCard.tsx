@@ -1,10 +1,10 @@
+import { Text, TextVariant } from '@/shared/components/Text';
+import { CardStatus } from '@/shared/features/chat/chat.constants';
+import type { PlanCard as PlanCardData } from '@/shared/features/chat/chat.types';
+import { sipMathService } from '@/shared/features/portfolio/service/sipMath';
+import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { useState } from 'react';
 import { View } from 'react-native';
-import type { PlanCard as PlanCardData } from '@/shared/features/chat/chat.types';
-import { CardStatus } from '@/shared/features/chat/chat.constants';
-import { Text, TextVariant } from '@/shared/components/Text';
-import { formatCurrency } from '@/shared/utils/formatCurrency';
-import { sipMathService } from '@/shared/services/sipMath';
 import { buildAdjustmentNote } from '../adjustmentNote.util';
 import { ConfirmActionRow } from '../ConfirmActionRow';
 import { computeSliderRangeAround, WhatIfSlider } from '../WhatIfSlider';

@@ -1,22 +1,22 @@
-import { z } from 'zod';
 import type OpenAI from 'openai';
+import { z } from 'zod';
 import {
   AgentPhase,
   CardStatus,
   ChatRole,
   ToolName,
-} from '../features/chat/chat.constants';
+} from '../../features/chat/chat.constants';
+import type {
+  BorrowComparisonCard,
+  ChatCard,
+  ChatMessage,
+  PlanCard,
+} from '../../features/chat/chat.types';
+import { mapToolCallsToCards } from './mapToolCallsToCards';
 import {
   agentOrchestratorService,
   type ToolCallRecord,
-} from '../services/agentOrchestrator';
-import { mapToolCallsToCards } from './mapToolCallsToCards';
-import type {
-  ChatCard,
-  PlanCard,
-  BorrowComparisonCard,
-  ChatMessage,
-} from '../features/chat/chat.types';
+} from './service/agentOrchestrator';
 
 type ChatCompletionMessage = OpenAI.Chat.Completions.ChatCompletionMessageParam;
 

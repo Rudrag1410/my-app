@@ -1,13 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   AgentPhase,
   CardStatus,
   ChatRole,
 } from '../features/chat/chat.constants';
-import { agentOrchestratorService } from '../services/agentOrchestrator';
-import { registerToolHandlers } from '../services/tool-handlers';
 import {
   createMessage,
   didConfirmingToolSucceed,
@@ -15,7 +13,9 @@ import {
   toHistory,
   withCardStatus,
   type ChatState,
-} from './chat.store.utils';
+} from '../features/chat/chat.store.utils';
+import { agentOrchestratorService } from '../features/chat/service/agentOrchestrator';
+import { registerToolHandlers } from '../features/chat/service/tool-handlers';
 
 registerToolHandlers();
 

@@ -1,7 +1,8 @@
-import { z } from 'zod';
-import { ToolName } from '../../features/chat/chat.constants';
 import { usePortfolioStore } from '@/shared/store/portfolio.store';
-import type { ToolHandler } from '../../features/chat/chat.types';
+import { z } from 'zod';
+
+import { ToolName } from '../../chat.constants';
+import type { ToolHandler } from '../../chat.types';
 import {
   BORROW_RATE_PERCENT_ANNUAL,
   LAMF_HAIRCUT_RATIO,

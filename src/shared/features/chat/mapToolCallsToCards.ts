@@ -1,10 +1,5 @@
-import {
-  CardStatus,
-  CardType,
-  ToolName,
-} from '../features/chat/chat.constants';
-import type { ChatCard } from '../features/chat/chat.types';
-import type { ToolCallRecord } from '../services/agentOrchestrator';
+import { CardStatus, CardType, ToolName } from './chat.constants';
+import type { ChatCard } from './chat.types';
 import {
   borrowEligibilityArgsSchema,
   borrowEligibilityResultSchema,
@@ -13,6 +8,7 @@ import {
   sipProjectionArgsSchema,
   sipProjectionResultSchema,
 } from './mapToolCallsToCards.schema';
+import type { ToolCallRecord } from './service/agentOrchestrator';
 
 const buildPlanCard = (toolCall: ToolCallRecord): ChatCard | null => {
   const args = sipProjectionArgsSchema.safeParse(toolCall.args);

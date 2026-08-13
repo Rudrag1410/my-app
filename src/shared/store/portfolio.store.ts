@@ -1,19 +1,19 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { mockPortfolio } from '../data/mockUser';
-import type {
-  PortfolioSnapshot,
-  Goal,
-} from '../features/portfolio/portfolio.types';
 import {
   createBorrow,
   createGoal,
   createSip,
   type AddBorrowInput,
   type AddGoalAndSipInput,
-} from './portfolio.store.utils';
+} from '../features/portfolio/portfolio.store.utils';
+import type {
+  Goal,
+  PortfolioSnapshot,
+} from '../features/portfolio/portfolio.types';
 
 interface PortfolioState {
   portfolio: PortfolioSnapshot;

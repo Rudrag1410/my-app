@@ -1,5 +1,5 @@
 import type OpenAI from 'openai';
-import { ToolName } from '../features/chat/chat.constants';
+import { ToolName } from '../chat.constants';
 
 export const toolDefinitions: OpenAI.Chat.Completions.ChatCompletionTool[] = [
   {

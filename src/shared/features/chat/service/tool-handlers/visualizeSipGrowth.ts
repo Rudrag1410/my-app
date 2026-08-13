@@ -1,7 +1,10 @@
+import {
+  sipMathService,
+  type GrowthSeriesPoint,
+} from '@/shared/features/portfolio/service/sipMath';
 import { z } from 'zod';
-import { ToolName } from '../../features/chat/chat.constants';
-import { sipMathService, type GrowthSeriesPoint } from '../sipMath';
-import type { ToolHandler } from '../../features/chat/chat.types';
+import { ToolName } from '../../chat.constants';
+import type { ToolHandler } from '../../chat.types';
 
 const inputSchema = z.object({
   goalName: z.string().min(1),

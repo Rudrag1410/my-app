@@ -1,10 +1,11 @@
 import { Text, TextVariant } from '@/shared/components/Text';
 import { CardStatus } from '@/shared/features/chat/chat.constants';
+import type { BorrowComparisonCard as BorrowComparisonCardData } from '@/shared/features/chat/chat.types';
+
 import {
   calculateLostGrowth10yr,
   calculateMonthlyRepayEstimate,
-} from '@/shared/services/tool-handlers/borrowMath';
-import type { BorrowComparisonCard as BorrowComparisonCardData } from '@/shared/features/chat/chat.types';
+} from '@/shared/features/chat/service/tool-handlers/borrowMath';
 import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { useState } from 'react';
 import { View } from 'react-native';

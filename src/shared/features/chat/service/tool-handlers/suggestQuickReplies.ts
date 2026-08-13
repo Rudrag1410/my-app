@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { ToolName } from '../../features/chat/chat.constants';
-import type { ToolHandler } from '../../features/chat/chat.types';
+import { ToolName } from '../../chat.constants';
+import type { ToolHandler } from '../../chat.types';
 
 const inputSchema = z.object({
   options: z.array(z.string().min(1)).min(1).max(4),
