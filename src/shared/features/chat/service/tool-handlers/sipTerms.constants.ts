@@ -1,0 +1,1 @@
+export const MAX_SIP_DURATION_MONTHS = 600;

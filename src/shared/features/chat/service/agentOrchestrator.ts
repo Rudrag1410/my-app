@@ -1,7 +1,7 @@
 import type OpenAI from 'openai';
 import { z } from 'zod';
 import type { ToolName } from '../chat.constants';
-import { CHAT_MODEL, openaiClient } from './openaiClient';
+import { CHAT_MODEL, getOpenAIClient } from './openaiClient';
 import { buildSystemPrompt } from './systemPrompt';
 import { toolDefinitions } from './toolDefinitions';
 import { toolRegistry } from './toolRegistry';
@@ -49,7 +49,7 @@ const runAgentTurn = async (
   const toolCallLog: ToolCallRecord[] = [];
 
   for (let step = 0; step < MAX_TOOL_CALL_STEPS; step += 1) {
-    const response = await openaiClient.chat.completions.create({
+    const response = await getOpenAIClient().chat.completions.create({
       model: CHAT_MODEL,
       messages,
       tools: toolDefinitions,

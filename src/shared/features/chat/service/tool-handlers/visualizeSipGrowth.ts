@@ -5,11 +5,12 @@ import {
 import { z } from 'zod';
 import { ToolName } from '../../chat.constants';
 import type { ToolHandler } from '../../chat.types';
+import { MAX_SIP_DURATION_MONTHS } from './sipTerms.constants';
 
 const inputSchema = z.object({
   goalName: z.string().min(1),
   monthlyAmount: z.number().positive(),
-  durationMonths: z.number().int().positive(),
+  durationMonths: z.number().int().positive().max(MAX_SIP_DURATION_MONTHS),
   expectedAnnualReturnPercent: z.number().positive().default(15),
 });
 

@@ -1,8 +1,9 @@
 import { z } from 'zod';
+import { MAX_SIP_DURATION_MONTHS } from './service/tool-handlers/sipTerms.constants';
 
 export const sipProjectionArgsSchema = z.object({
   goalName: z.string().min(1),
-  durationMonths: z.number().int().positive(),
+  durationMonths: z.number().int().positive().max(MAX_SIP_DURATION_MONTHS),
 });
 
 export const sipProjectionResultSchema = z.object({

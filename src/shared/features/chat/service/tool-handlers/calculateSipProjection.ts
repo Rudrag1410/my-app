@@ -2,12 +2,13 @@ import { sipMathService } from '@/shared/features/portfolio/service/sipMath';
 import { z } from 'zod';
 import { ToolName } from '../../chat.constants';
 import type { ToolHandler } from '../../chat.types';
+import { MAX_SIP_DURATION_MONTHS } from './sipTerms.constants';
 
 const inputSchema = z
   .object({
     monthlyAmount: z.number().positive().optional(),
     targetAmount: z.number().positive().optional(),
-    durationMonths: z.number().int().positive(),
+    durationMonths: z.number().int().positive().max(MAX_SIP_DURATION_MONTHS),
     expectedAnnualReturnPercent: z.number().positive().default(15),
   })
   .refine(
