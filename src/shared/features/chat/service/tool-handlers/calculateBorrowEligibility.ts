@@ -5,12 +5,10 @@ import { ToolName } from '../../chat.constants';
 import type { ToolHandler } from '../../chat.types';
 import {
   calculateLostGrowth10yr,
+  calculateMaxEligible,
   calculateMonthlyRepayEstimate,
 } from './borrowMath';
-import {
-  BORROW_RATE_PERCENT_ANNUAL,
-  LAMF_HAIRCUT_RATIO,
-} from './borrowTerms.constants';
+import { BORROW_RATE_PERCENT_ANNUAL } from './borrowTerms.constants';
 
 const inputSchema = z.object({ amountNeeded: z.number().positive() });
 
@@ -27,7 +25,7 @@ export const calculateBorrowEligibilityHandler: ToolHandler<Output> = {
   execute: (rawInput) => {
     const input = inputSchema.parse(rawInput);
     const { growBalance } = usePortfolioStore.getState().portfolio;
-    const maxEligible = Math.round(growBalance * LAMF_HAIRCUT_RATIO);
+    const maxEligible = calculateMaxEligible(growBalance);
 
     return {
       eligible: input.amountNeeded <= maxEligible,

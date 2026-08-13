@@ -7,10 +7,10 @@ import { visualizeSipGrowthHandler } from './visualizeSipGrowth';
 import { suggestQuickRepliesHandler } from './suggestQuickReplies';
 
 export const registerToolHandlers = (): void => {
-  toolRegistry.register(calculateSipProjectionHandler as never);
-  toolRegistry.register(startSipHandler as never);
-  toolRegistry.register(calculateBorrowEligibilityHandler as never);
-  toolRegistry.register(initiateBorrowHandler as never);
-  toolRegistry.register(visualizeSipGrowthHandler as never);
-  toolRegistry.register(suggestQuickRepliesHandler as never);
+  toolRegistry.register(calculateSipProjectionHandler);
+  toolRegistry.register(startSipHandler);
+  toolRegistry.register(calculateBorrowEligibilityHandler);
+  toolRegistry.register(initiateBorrowHandler);
+  toolRegistry.register(visualizeSipGrowthHandler);
+  toolRegistry.register(suggestQuickRepliesHandler);
 };

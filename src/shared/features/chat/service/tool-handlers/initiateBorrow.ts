@@ -3,10 +3,8 @@ import { z } from 'zod';
 
 import { ToolName } from '../../chat.constants';
 import type { ToolHandler } from '../../chat.types';
-import {
-  BORROW_RATE_PERCENT_ANNUAL,
-  LAMF_HAIRCUT_RATIO,
-} from './borrowTerms.constants';
+import { calculateMaxEligible } from './borrowMath';
+import { BORROW_RATE_PERCENT_ANNUAL } from './borrowTerms.constants';
 
 const inputSchema = z.object({ amount: z.number().positive() });
 
@@ -19,7 +17,7 @@ export const initiateBorrowHandler: ToolHandler<Output> = {
   execute: (rawInput) => {
     const input = inputSchema.parse(rawInput);
     const { growBalance } = usePortfolioStore.getState().portfolio;
-    const maxEligible = Math.round(growBalance * LAMF_HAIRCUT_RATIO);
+    const maxEligible = calculateMaxEligible(growBalance);
     if (input.amount > maxEligible) {
       throw new Error(
         `Requested amount of ${input.amount} exceeds the eligible maximum of ${maxEligible}. Call calculate_borrow_eligibility again if needed and use an amount at or below the eligible maximum.`
