@@ -3,7 +3,13 @@ import { Chip } from '@/shared/components/Chip';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { chatPageStyles as styles } from '../ChatPage.styles';
 
-const STARTER_PROMPTS = ['I want to start saving', 'I need cash this month'];
+const STARTER_PROMPTS = [
+  'I want to start saving',
+  'I need cash this month',
+  'Help me plan for retirement',
+  'I want to borrow against my investments',
+  'How much would ₹500/day grow to?',
+];
 
 interface ChatEmptyStateProps {
   onSelectPrompt: (prompt: string) => void;
