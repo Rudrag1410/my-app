@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { ErrorState } from '@/shared/components/ErrorState';
-import type { ChatMessage } from '@/shared/types/chatMessage.types';
+import type { ChatMessage } from '@/shared/features/chat/chat.types';
 import { ChatBubble } from '../ChatBubble';
 import { ChatCardRenderer } from '../ChatCardRenderer';
 import { chatPageStyles as styles } from '../ChatPage.styles';

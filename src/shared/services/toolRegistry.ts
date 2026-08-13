@@ -1,5 +1,5 @@
-import type { ToolName } from '../constants/toolName.constants';
-import type { ToolHandler } from '../types/tool.types';
+import type { ToolName } from '../features/chat/chat.constants';
+import type { ToolHandler } from '../features/chat/chat.types';
 
 class ToolRegistry {
   private readonly handlers = new Map<ToolName, ToolHandler<unknown>>();

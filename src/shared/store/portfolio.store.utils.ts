@@ -1,6 +1,9 @@
-import { GoalStatus } from '../constants/goalStatus.constants';
-import type { Goal } from '../types/goal.types';
-import type { ActiveBorrow, ExistingSip } from '../types/portfolio.types';
+import { GoalStatus } from '../features/portfolio/portfolio.constants';
+import type {
+  Goal,
+  ActiveBorrow,
+  ExistingSip,
+} from '../features/portfolio/portfolio.types';
 
 export interface AddGoalAndSipInput {
   goalName: string;

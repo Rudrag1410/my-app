@@ -1,9 +1,11 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AgentPhase } from '../constants/agentPhase.constants';
-import { CardStatus } from '../constants/cardStatus.constants';
-import { ChatRole } from '../constants/chatRole.constants';
+import {
+  AgentPhase,
+  CardStatus,
+  ChatRole,
+} from '../features/chat/chat.constants';
 import { agentOrchestratorService } from '../services/agentOrchestrator';
 import { registerToolHandlers } from '../services/tool-handlers';
 import {

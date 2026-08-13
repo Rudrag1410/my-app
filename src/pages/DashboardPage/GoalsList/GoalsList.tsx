@@ -1,4 +1,4 @@
-import type { Goal } from '@/shared/types/goal.types';
+import type { Goal } from '@/shared/features/portfolio/portfolio.types';
 import { EmptyGoalsState } from '../EmptyGoalsState';
 import { GoalCard, GoalCardSkeleton } from '../GoalCard';
 

@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { ToolName } from '../../constants/toolName.constants';
+import { ToolName } from '../../features/chat/chat.constants';
 import { sipMathService } from '../sipMath';
-import type { ToolHandler } from '../../types/tool.types';
+import type { ToolHandler } from '../../features/chat/chat.types';
 
 const inputSchema = z
   .object({

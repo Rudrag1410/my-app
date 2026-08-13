@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Chip } from '@/shared/components/Chip';
-import type { QuickRepliesCard } from '@/shared/types/card.types';
+import type { QuickRepliesCard } from '@/shared/features/chat/chat.types';
 import { quickReplyRowStyles as styles } from './QuickReplyRow.styles';
 
 interface QuickReplyRowProps {

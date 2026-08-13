@@ -1,5 +1,7 @@
-import type { UserProfile } from '../types/userProfile.types';
-import type { PortfolioSnapshot } from '../types/portfolio.types';
+import type {
+  UserProfile,
+  PortfolioSnapshot,
+} from '../features/portfolio/portfolio.types';
 
 export const mockUserProfile: UserProfile = {
   id: 'user_001',

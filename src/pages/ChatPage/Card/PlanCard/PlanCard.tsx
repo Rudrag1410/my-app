@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import type { PlanCard as PlanCardData } from '@/shared/types/card.types';
-import { CardStatus } from '@/shared/constants/cardStatus.constants';
+import type { PlanCard as PlanCardData } from '@/shared/features/chat/chat.types';
+import { CardStatus } from '@/shared/features/chat/chat.constants';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { sipMathService } from '@/shared/services/sipMath';

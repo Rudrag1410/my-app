@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import type OpenAI from 'openai';
-import { AgentPhase } from '../constants/agentPhase.constants';
-import { CardStatus } from '../constants/cardStatus.constants';
-import { ChatRole } from '../constants/chatRole.constants';
-import { ToolName } from '../constants/toolName.constants';
+import {
+  AgentPhase,
+  CardStatus,
+  ChatRole,
+  ToolName,
+} from '../features/chat/chat.constants';
 import {
   agentOrchestratorService,
   type ToolCallRecord,
@@ -13,8 +15,8 @@ import type {
   ChatCard,
   PlanCard,
   BorrowComparisonCard,
-} from '../types/card.types';
-import type { ChatMessage } from '../types/chatMessage.types';
+  ChatMessage,
+} from '../features/chat/chat.types';
 
 type ChatCompletionMessage = OpenAI.Chat.Completions.ChatCompletionMessageParam;
 

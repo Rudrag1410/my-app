@@ -3,8 +3,10 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { mockPortfolio } from '../data/mockUser';
-import type { PortfolioSnapshot } from '../types/portfolio.types';
-import type { Goal } from '../types/goal.types';
+import type {
+  PortfolioSnapshot,
+  Goal,
+} from '../features/portfolio/portfolio.types';
 import {
   createBorrow,
   createGoal,

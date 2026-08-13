@@ -1,7 +1,9 @@
-import { CardStatus } from '../constants/cardStatus.constants';
-import { CardType } from '../constants/cardType.constants';
-import { ToolName } from '../constants/toolName.constants';
-import type { ChatCard } from '../types/card.types';
+import {
+  CardStatus,
+  CardType,
+  ToolName,
+} from '../features/chat/chat.constants';
+import type { ChatCard } from '../features/chat/chat.types';
 import type { ToolCallRecord } from '../services/agentOrchestrator';
 import {
   borrowEligibilityArgsSchema,

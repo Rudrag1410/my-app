@@ -1,5 +1,9 @@
-import type { CardType } from '../constants/cardType.constants';
-import type { CardStatus } from '../constants/cardStatus.constants';
+import type {
+  CardType,
+  CardStatus,
+  ChatRole,
+  ToolName,
+} from './chat.constants';
 
 interface BaseCard {
   status: CardStatus;
@@ -40,3 +44,23 @@ export interface QuickRepliesCard {
 
 export type ChatCard =
   PlanCard | BorrowComparisonCard | GrowthChartCard | QuickRepliesCard;
+
+export interface ChatMessage {
+  id: string;
+  role: ChatRole;
+  content: string;
+  createdAt: number;
+  cards: ChatCard[];
+  isError: boolean;
+}
+
+export interface ToolHandler<TOutput> {
+  readonly name: ToolName;
+  execute: (input: unknown) => TOutput;
+}
+
+export interface ToolDefinition {
+  name: ToolName;
+  description: string;
+  parameters: Record<string, unknown>;
+}

@@ -1,6 +1,6 @@
 import type OpenAI from 'openai';
 import { z } from 'zod';
-import type { ToolName } from '../constants/toolName.constants';
+import type { ToolName } from '../features/chat/chat.constants';
 import { CHAT_MODEL, openaiClient } from './openaiClient';
 import { buildSystemPrompt } from './systemPrompt';
 import { toolDefinitions } from './toolDefinitions';

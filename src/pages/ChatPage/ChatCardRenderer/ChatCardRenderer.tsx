@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react';
-import { CardType } from '@/shared/constants/cardType.constants';
+import { CardType } from '@/shared/features/chat/chat.constants';
 import type {
   BorrowComparisonCard as BorrowComparisonCardData,
   ChatCard,
   GrowthChartCard as GrowthChartCardData,
   PlanCard as PlanCardData,
   QuickRepliesCard as QuickRepliesCardData,
-} from '@/shared/types/card.types';
+} from '@/shared/features/chat/chat.types';
 import { BorrowComparisonCard } from '../Card/BorrowComparisonCard';
 import { GrowthChartCard } from '../Card/GrowthChartCard';
 import { PlanCard } from '../Card/PlanCard';

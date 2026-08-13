@@ -1,4 +1,4 @@
-import { ChatRole } from '@/shared/constants/chatRole.constants';
+import { ChatRole } from '@/shared/features/chat/chat.constants';
 import { Text, View } from 'react-native';
 import { chatBubbleStyles as styles } from './ChatBubble.styles';
 

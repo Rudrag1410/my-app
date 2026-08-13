@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { formatCurrency } from '@/shared/utils/formatCurrency';
-import type { Goal } from '@/shared/types/goal.types';
+import type { Goal } from '@/shared/features/portfolio/portfolio.types';
 import { GoalProgressRing } from './GoalProgressRing';
 import { goalCardStyles as styles } from './GoalCard.styles';
 

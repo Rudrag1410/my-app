@@ -1,4 +1,4 @@
-import { AgentPhase } from '@/shared/constants/agentPhase.constants';
+import { AgentPhase } from '@/shared/features/chat/chat.constants';
 import { useChatStore } from '@/shared/store/chat.store';
 
 export const useAgentChat = () => {

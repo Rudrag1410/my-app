@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { GrowthChartCard as GrowthChartCardData } from '@/shared/types/card.types';
+import type { GrowthChartCard as GrowthChartCardData } from '@/shared/features/chat/chat.types';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { formatCompactCurrency } from '@/shared/utils/formatCurrency';
 import { growthChartCardStyles as styles } from './GrowthChartCard.styles';

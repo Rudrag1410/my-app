@@ -1,4 +1,4 @@
-import { CardStatus } from '@/shared/constants/cardStatus.constants';
+import { CardStatus } from '@/shared/features/chat/chat.constants';
 import { Button, ButtonVariant } from '@/shared/components/Button';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { View } from 'react-native';
