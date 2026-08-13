@@ -1,5 +1,12 @@
+import type { ReactElement } from 'react';
 import { CardType } from '@/shared/constants/cardType.constants';
-import type { ChatCard } from '@/shared/types/card.types';
+import type {
+  BorrowComparisonCard as BorrowComparisonCardData,
+  ChatCard,
+  GrowthChartCard as GrowthChartCardData,
+  PlanCard as PlanCardData,
+  QuickRepliesCard as QuickRepliesCardData,
+} from '@/shared/types/card.types';
 import { BorrowComparisonCard } from '../Card/BorrowComparisonCard';
 import { GrowthChartCard } from '../Card/GrowthChartCard';
 import { PlanCard } from '../Card/PlanCard';
@@ -14,38 +21,49 @@ interface ChatCardRendererProps {
   onSelectQuickReply: (option: string) => void;
 }
 
-export const ChatCardRenderer = ({
-  card,
-  messageId,
-  isExecutingTool,
-  onConfirm,
-  onCancel,
-  onSelectQuickReply,
-}: ChatCardRendererProps) => {
-  switch (card.type) {
-    case CardType.PlanCard:
-      return (
-        <PlanCard
-          card={card}
-          onConfirm={(adjustmentNote) => onConfirm(messageId, adjustmentNote)}
-          onCancel={() => onCancel(messageId)}
-          loading={isExecutingTool}
-        />
-      );
-    case CardType.BorrowComparisonCard:
-      return (
-        <BorrowComparisonCard
-          card={card}
-          onConfirm={(adjustmentNote) => onConfirm(messageId, adjustmentNote)}
-          onCancel={() => onCancel(messageId)}
-          loading={isExecutingTool}
-        />
-      );
-    case CardType.GrowthChartCard:
-      return <GrowthChartCard card={card} />;
-    case CardType.QuickRepliesCard:
-      return <QuickReplyRow card={card} onSelect={onSelectQuickReply} />;
-    default:
-      return null;
-  }
+type CardRenderer = (props: ChatCardRendererProps) => ReactElement;
+
+const cardRendererByType: Record<CardType, CardRenderer> = {
+  [CardType.PlanCard]: ({
+    card,
+    messageId,
+    isExecutingTool,
+    onConfirm,
+    onCancel,
+  }) => (
+    <PlanCard
+      card={card as PlanCardData}
+      onConfirm={(adjustmentNote) => onConfirm(messageId, adjustmentNote)}
+      onCancel={() => onCancel(messageId)}
+      loading={isExecutingTool}
+    />
+  ),
+  [CardType.BorrowComparisonCard]: ({
+    card,
+    messageId,
+    isExecutingTool,
+    onConfirm,
+    onCancel,
+  }) => (
+    <BorrowComparisonCard
+      card={card as BorrowComparisonCardData}
+      onConfirm={(adjustmentNote) => onConfirm(messageId, adjustmentNote)}
+      onCancel={() => onCancel(messageId)}
+      loading={isExecutingTool}
+    />
+  ),
+  [CardType.GrowthChartCard]: ({ card }) => (
+    <GrowthChartCard card={card as GrowthChartCardData} />
+  ),
+  [CardType.QuickRepliesCard]: ({ card, onSelectQuickReply }) => (
+    <QuickReplyRow
+      card={card as QuickRepliesCardData}
+      onSelect={onSelectQuickReply}
+    />
+  ),
+};
+
+export const ChatCardRenderer = (props: ChatCardRendererProps) => {
+  const renderCard = cardRendererByType[props.card.type];
+  return renderCard(props);
 };
