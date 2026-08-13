@@ -1,0 +1,2 @@
+export const LAMF_HAIRCUT_RATIO = 0.7;
+export const BORROW_RATE_PERCENT_ANNUAL = 9.99;

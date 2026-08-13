@@ -1,8 +1,45 @@
-# Welcome to your Expo app 👋
+# BlinkMoney — AI Wealth Agent
+
+A chat-first AI agent, backed by real OpenAI tool calling, that helps a user set a Save/Grow
+goal and start a SIP — and, when the user signals a cash need, steers them toward borrowing
+against their portfolio instead of breaking their SIP.
+
+## Setup
+
+1. Install dependencies
+
+   ```bash
+   yarn install
+   ```
+
+2. Add your OpenAI API key to `.env` (already gitignored):
+
+   ```
+   EXPO_PUBLIC_OPENAI_API_KEY=sk-...
+   ```
+
+3. Start the app
+
+   ```bash
+   npx expo start
+   ```
+
+## Known trade-off
+
+`EXPO_PUBLIC_OPENAI_API_KEY` ships inside the client bundle, so it's visible to anyone who
+inspects the app. This is acceptable for this assignment's scope, but in production this call
+should move behind a backend proxy that holds the key server-side and forwards chat/tool-call
+requests on the client's behalf.
+
+One consequence of this: OpenAI's Chat Completions API does not send CORS headers, so it can't
+be called directly from a browser — the web target (`expo start --web`) will hit a CORS error
+on every turn. Native (iOS/Android) is unaffected, since CORS is a browser-only restriction.
+
+---
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## Get started (Expo boilerplate)
 
 1. Install dependencies
 

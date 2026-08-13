@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+web-build
+.expo
+
+# Generated
+*.min.js
+expo-env.d.ts
+
+# Lock files
+yarn.lock

@@ -1,0 +1,1 @@
+export { GrowthChartCard } from './GrowthChartCard';

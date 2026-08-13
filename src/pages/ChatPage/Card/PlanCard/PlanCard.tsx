@@ -1,0 +1,104 @@
+import { useState } from 'react';
+import { View } from 'react-native';
+import type { PlanCard as PlanCardData } from '@/shared/types/card.types';
+import { CardStatus } from '@/shared/constants/cardStatus.constants';
+import { Text, TextVariant } from '@/shared/components/Text';
+import { formatCurrency } from '@/shared/utils/formatCurrency';
+import { sipMathService } from '@/shared/services/sipMath';
+import { ConfirmActionRow } from '../ConfirmActionRow';
+import { computeSliderRangeAround, WhatIfSlider } from '../WhatIfSlider';
+import { planCardStyles as styles } from './PlanCard.styles';
+
+interface PlanCardProps {
+  card: PlanCardData;
+  onConfirm: (adjustmentNote?: string) => void;
+  onCancel: () => void;
+  loading?: boolean;
+}
+
+const ASSUMED_ANNUAL_RETURN_PERCENT = 15;
+
+export const PlanCard = ({
+  card,
+  onConfirm,
+  onCancel,
+  loading,
+}: PlanCardProps) => {
+  const [monthlyAmount, setMonthlyAmount] = useState(card.monthlyAmount);
+  const isEditable = card.status === CardStatus.AwaitingConfirmation;
+  const hasBeenAdjusted = monthlyAmount !== card.monthlyAmount;
+
+  const projectedValue = hasBeenAdjusted
+    ? sipMathService.projectValue(
+        monthlyAmount,
+        card.durationMonths,
+        ASSUMED_ANNUAL_RETURN_PERCENT
+      )
+    : card.projectedValue;
+
+  const sliderRange = computeSliderRangeAround(card.monthlyAmount);
+
+  const handleConfirm = () => {
+    onConfirm(
+      hasBeenAdjusted
+        ? `They adjusted the monthly amount to ${formatCurrency(monthlyAmount)} using the slider before confirming — use this amount, not the original.`
+        : undefined
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text variant={TextVariant.Title} style={styles.goalName}>
+        {card.goalName}
+      </Text>
+
+      {isEditable ? (
+        <WhatIfSlider
+          label='Monthly SIP'
+          value={monthlyAmount}
+          minValue={sliderRange.min}
+          maxValue={sliderRange.max}
+          step={sliderRange.step}
+          onChange={setMonthlyAmount}
+          formatValue={formatCurrency}
+        />
+      ) : (
+        <View style={styles.row}>
+          <Text variant={TextVariant.Body} colorToken='textSecondary'>
+            Monthly SIP
+          </Text>
+          <Text variant={TextVariant.BodyMedium}>
+            {formatCurrency(monthlyAmount)}
+          </Text>
+        </View>
+      )}
+
+      <View style={styles.row}>
+        <Text variant={TextVariant.Body} colorToken='textSecondary'>
+          Duration
+        </Text>
+        <Text variant={TextVariant.BodyMedium}>
+          {card.durationMonths} months
+        </Text>
+      </View>
+
+      <View style={styles.divider} />
+
+      <View style={styles.row}>
+        <Text variant={TextVariant.Body} colorToken='textSecondary'>
+          Projected value
+        </Text>
+        <Text variant={TextVariant.BodyMedium} colorToken='brand'>
+          {formatCurrency(projectedValue)}
+        </Text>
+      </View>
+
+      <ConfirmActionRow
+        status={card.status}
+        onConfirm={handleConfirm}
+        onCancel={onCancel}
+        loading={loading}
+      />
+    </View>
+  );
+};
