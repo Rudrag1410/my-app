@@ -1,16 +1,19 @@
 {
   "expo": {
     "name": "my-app",
-    "slug": "my-app",
+    "slug": "rudra",
+    "owner": "rudragdevs-team",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.rudrag.dev.my-app"
     },
     "android": {
+      "package": "com.rudrag.dev.myapp",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -37,6 +40,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "78beb7f9-945a-4165-9641-9ab2dd40a0a0"
+      }
     }
   }
 }
