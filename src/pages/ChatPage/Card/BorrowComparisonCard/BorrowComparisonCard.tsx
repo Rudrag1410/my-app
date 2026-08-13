@@ -8,6 +8,7 @@ import type { BorrowComparisonCard as BorrowComparisonCardData } from '@/shared/
 import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { buildAdjustmentNote } from '../adjustmentNote.util';
 import { ConfirmActionRow } from '../ConfirmActionRow';
 import { computeSliderRangeUpTo, WhatIfSlider } from '../WhatIfSlider';
 import { borrowComparisonCardStyles as styles } from './BorrowComparisonCard.styles';
@@ -42,11 +43,7 @@ export const BorrowComparisonCard = ({
   );
 
   const handleConfirm = () => {
-    onConfirm(
-      hasBeenAdjusted
-        ? `They adjusted the borrow amount to ${formatCurrency(amount)} using the slider before confirming — use this amount, not the original.`
-        : undefined
-    );
+    onConfirm(buildAdjustmentNote('borrow amount', amount, hasBeenAdjusted));
   };
 
   return (

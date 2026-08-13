@@ -5,6 +5,7 @@ import { CardStatus } from '@/shared/constants/cardStatus.constants';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { sipMathService } from '@/shared/services/sipMath';
+import { buildAdjustmentNote } from '../adjustmentNote.util';
 import { ConfirmActionRow } from '../ConfirmActionRow';
 import { computeSliderRangeAround, WhatIfSlider } from '../WhatIfSlider';
 import { planCardStyles as styles } from './PlanCard.styles';
@@ -40,9 +41,7 @@ export const PlanCard = ({
 
   const handleConfirm = () => {
     onConfirm(
-      hasBeenAdjusted
-        ? `They adjusted the monthly amount to ${formatCurrency(monthlyAmount)} using the slider before confirming — use this amount, not the original.`
-        : undefined
+      buildAdjustmentNote('monthly amount', monthlyAmount, hasBeenAdjusted)
     );
   };
 

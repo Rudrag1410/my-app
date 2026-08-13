@@ -1,16 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-  PanResponder,
-  View,
-  type LayoutChangeEvent,
-  type PanResponderInstance,
-} from 'react-native';
+import { View } from 'react-native';
 import { Text, TextVariant } from '@/shared/components/Text';
-import { clamp, snapToStep } from './WhatIfSlider.util';
+import { clamp } from './WhatIfSlider.util';
 import {
   THUMB_SIZE,
   whatIfSliderStyles as styles,
 } from './WhatIfSlider.styles';
+import { useWhatIfSliderPanResponder } from './useWhatIfSliderPanResponder';
 
 interface WhatIfSliderProps {
   label: string;
@@ -31,62 +26,14 @@ export const WhatIfSlider = ({
   onChange,
   formatValue,
 }: WhatIfSliderProps) => {
-  const [trackWidth, setTrackWidth] = useState(0);
-  const [panResponder, setPanResponder] = useState<PanResponderInstance | null>(
-    null
-  );
-
-  const trackWidthRef = useRef(0);
-  const valueRef = useRef(value);
-  const rangeRef = useRef({ minValue, maxValue, step });
-  const onChangeRef = useRef(onChange);
-  const startValueRef = useRef(value);
-
-  useEffect(() => {
-    trackWidthRef.current = trackWidth;
-  }, [trackWidth]);
-
-  useEffect(() => {
-    valueRef.current = value;
-  }, [value]);
-
-  useEffect(() => {
-    rangeRef.current = { minValue, maxValue, step };
-  }, [minValue, maxValue, step]);
-
-  useEffect(() => {
-    onChangeRef.current = onChange;
-  }, [onChange]);
-
-  useEffect(() => {
-    setPanResponder(
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderGrant: () => {
-          startValueRef.current = valueRef.current;
-        },
-        onPanResponderMove: (_event, gestureState) => {
-          const width = trackWidthRef.current;
-          if (width <= 0) {
-            return;
-          }
-          const {
-            minValue: min,
-            maxValue: max,
-            step: stepSize,
-          } = rangeRef.current;
-          const deltaValue = (gestureState.dx / width) * (max - min);
-          const nextValue = clamp(startValueRef.current + deltaValue, min, max);
-          onChangeRef.current(snapToStep(nextValue, stepSize, min));
-        },
-      })
-    );
-  }, []);
-
-  const handleLayout = (event: LayoutChangeEvent) => {
-    setTrackWidth(event.nativeEvent.layout.width);
-  };
+  const { trackWidth, panResponder, handleLayout } =
+    useWhatIfSliderPanResponder({
+      value,
+      minValue,
+      maxValue,
+      step,
+      onChange,
+    });
 
   const percent =
     trackWidth > 0

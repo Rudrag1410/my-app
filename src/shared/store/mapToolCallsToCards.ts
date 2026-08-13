@@ -1,39 +1,16 @@
-import { z } from 'zod';
 import { CardStatus } from '../constants/cardStatus.constants';
 import { CardType } from '../constants/cardType.constants';
 import { ToolName } from '../constants/toolName.constants';
 import type { ChatCard } from '../types/card.types';
 import type { ToolCallRecord } from '../services/agentOrchestrator';
-
-const sipProjectionArgsSchema = z.object({
-  goalName: z.string().min(1),
-  durationMonths: z.number().int().positive(),
-});
-
-const sipProjectionResultSchema = z.object({
-  monthlyAmount: z.number(),
-  projectedValue: z.number(),
-});
-
-const borrowEligibilityArgsSchema = z.object({
-  amountNeeded: z.number().positive(),
-});
-
-const borrowEligibilityResultSchema = z.object({
-  maxEligible: z.number(),
-  ratePercentAnnual: z.number(),
-  monthlyRepayEstimate: z.number(),
-  lostGrowth10yr: z.number(),
-});
-
-const growthChartResultSchema = z.object({
-  goalName: z.string().min(1),
-  points: z.array(z.object({ monthsElapsed: z.number(), value: z.number() })),
-});
-
-const quickRepliesResultSchema = z.object({
-  options: z.array(z.string().min(1)).min(1).max(4),
-});
+import {
+  borrowEligibilityArgsSchema,
+  borrowEligibilityResultSchema,
+  growthChartResultSchema,
+  quickRepliesResultSchema,
+  sipProjectionArgsSchema,
+  sipProjectionResultSchema,
+} from './mapToolCallsToCards.schema';
 
 const buildPlanCard = (toolCall: ToolCallRecord): ChatCard | null => {
   const args = sipProjectionArgsSchema.safeParse(toolCall.args);
