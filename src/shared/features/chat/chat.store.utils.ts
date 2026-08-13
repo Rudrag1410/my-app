@@ -30,6 +30,7 @@ export interface ChatState {
   ) => Promise<void>;
   cancelPendingCard: (messageId: string) => Promise<void>;
   retryLastTurn: () => Promise<void>;
+  startNewChat: () => void;
 }
 
 export type SetChatState = (

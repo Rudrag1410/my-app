@@ -3,6 +3,9 @@ import { theme } from '@/shared/theme/theme';
 
 export const chatPageStyles = StyleSheet.create({
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: theme.spacing.sm,
     paddingVertical: theme.spacingUnit * 3,
     borderBottomWidth: 1,

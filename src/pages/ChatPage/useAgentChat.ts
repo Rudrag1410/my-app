@@ -8,6 +8,7 @@ export const useAgentChat = () => {
   const confirmPendingCard = useChatStore((state) => state.confirmPendingCard);
   const cancelPendingCard = useChatStore((state) => state.cancelPendingCard);
   const retryLastTurn = useChatStore((state) => state.retryLastTurn);
+  const startNewChat = useChatStore((state) => state.startNewChat);
 
   return {
     messages,
@@ -18,5 +19,6 @@ export const useAgentChat = () => {
     confirmPendingCard,
     cancelPendingCard,
     retryLastTurn,
+    startNewChat,
   };
 };

@@ -1,5 +1,11 @@
 import { useRef } from 'react';
-import { FlatList, KeyboardAvoidingView, Platform, View } from 'react-native';
+import {
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  View,
+} from 'react-native';
 import { Screen } from '@/shared/components/Screen';
 import { Text, TextVariant } from '@/shared/components/Text';
 import { AgentPhase } from '@/shared/features/chat/chat.constants';
@@ -21,6 +27,7 @@ export const ChatPage = () => {
     confirmPendingCard,
     cancelPendingCard,
     retryLastTurn,
+    startNewChat,
   } = useAgentChat();
   const listRef = useRef<FlatList<ChatMessage>>(null);
 
@@ -28,10 +35,17 @@ export const ChatPage = () => {
     <Screen>
       <View style={styles.header}>
         <Text variant={TextVariant.Title}>BlinkMoney Agent</Text>
+        {messages.length > 0 ? (
+          <Pressable onPress={startNewChat} hitSlop={8}>
+            <Text variant={TextVariant.Label} colorToken='brand'>
+              New chat
+            </Text>
+          </Pressable>
+        ) : null}
       </View>
       <KeyboardAvoidingView
         style={styles.keyboardAvoiding}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
         <FlatList

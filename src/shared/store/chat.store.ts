@@ -100,6 +100,10 @@ export const useChatStore = create<ChatState>()(
         }));
         await runChatTurn(set, get);
       },
+
+      startNewChat: () => {
+        set({ messages: [], agentPhase: AgentPhase.Idle });
+      },
     }),
     {
       name: CHAT_STORAGE_KEY,
