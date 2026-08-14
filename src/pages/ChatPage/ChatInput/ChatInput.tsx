@@ -28,7 +28,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
         style={styles.input}
         value={draft}
         onChangeText={setDraft}
-        placeholder='Message BlinkMoney...'
+        placeholder='Message AI Agent...'
         placeholderTextColor={theme.colors.textTertiary}
         editable={!disabled}
         multiline

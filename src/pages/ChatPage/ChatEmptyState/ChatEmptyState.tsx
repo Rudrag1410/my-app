@@ -19,7 +19,7 @@ export const ChatEmptyState = ({ onSelectPrompt }: ChatEmptyStateProps) => {
   return (
     <View style={styles.emptyState}>
       <Text variant={TextVariant.Title} style={styles.emptyTitle}>
-        Ask BlinkMoney anything
+        Ask your AI agent anything
       </Text>
       <Text
         variant={TextVariant.Body}

@@ -1,4 +1,4 @@
-# BlinkMoney — AI Wealth Agent
+# AI Wealth Agent
 
 A chat-first AI agent, backed by real OpenAI tool calling, that helps a user set a Save/Grow
 goal and start a SIP — and, when the user signals a cash need, steers them toward borrowing

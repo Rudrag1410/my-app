@@ -34,7 +34,7 @@ export const ChatPage = () => {
   return (
     <Screen>
       <View style={styles.header}>
-        <Text variant={TextVariant.Title}>BlinkMoney Agent</Text>
+        <Text variant={TextVariant.Title}>AI Wealth Agent</Text>
         {messages.length > 0 ? (
           <Pressable onPress={startNewChat} hitSlop={8}>
             <Text variant={TextVariant.Label} colorToken='brand'>

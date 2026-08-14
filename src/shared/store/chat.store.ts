@@ -19,7 +19,7 @@ import { registerToolHandlers } from '../features/chat/service/tool-handlers';
 
 registerToolHandlers();
 
-const CHAT_STORAGE_KEY = 'blinkmoney-chat';
+const CHAT_STORAGE_KEY = 'ai-agent-chat';
 
 export const useChatStore = create<ChatState>()(
   persist(

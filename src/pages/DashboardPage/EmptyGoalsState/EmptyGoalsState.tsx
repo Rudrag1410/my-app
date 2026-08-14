@@ -17,7 +17,7 @@ export const EmptyGoalsState = () => {
         colorToken='textSecondary'
         style={styles.subtitle}
       >
-        Chat with your BlinkMoney agent to set up your first Save or Grow goal.
+        Chat with your AI agent to set up your first Save or Grow goal.
       </Text>
       <View style={styles.button}>
         <Button label='Start a goal' onPress={() => router.push('/chat')} />

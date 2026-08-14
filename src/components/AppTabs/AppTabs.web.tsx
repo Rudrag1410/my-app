@@ -68,7 +68,7 @@ export const CustomTabList = (props: TabListProps) => {
           colorToken='brand'
           style={styles.brandText}
         >
-          BlinkMoney
+          AI Agent
         </Text>
 
         {props.children}

@@ -22,7 +22,7 @@ interface PortfolioState {
   addBorrow: (input: AddBorrowInput) => void;
 }
 
-const PORTFOLIO_STORAGE_KEY = 'blinkmoney-portfolio';
+const PORTFOLIO_STORAGE_KEY = 'ai-agent-portfolio';
 
 export const usePortfolioStore = create<PortfolioState>()(
   persist(
